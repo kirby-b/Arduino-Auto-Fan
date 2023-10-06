@@ -9,3 +9,5 @@
 //Put detection method here that checks tempurature/humidity in their methods
 
 //Optional methods here that control buttons, lights, and/or screens
+
+//Make sure to add timeout stuff when necessary
