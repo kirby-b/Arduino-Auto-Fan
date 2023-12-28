@@ -1,16 +1,29 @@
+/************************
+Exercise the motor using
+the L293D chip
+************************/
+#include <dht_nonblocking.h>
 // Put initial variables here
 
-// Put method to turn on and off fan here
+#define DHT_SENSOR_TYPE DHT_TYPE_11
+#define ENABLE 5
+#define DIRA 3
+#define DIRB 4
 
-//Temp method here
+static const int DHT_SENSOR_PIN = 2;
+int i;
+DHT_nonblocking dht_sensor( DHT_SENSOR_PIN, DHT_SENSOR_TYPE );
 
-//Humidity method here
-
-//Put detection method here that checks tempurature/humidity in their methods
-
-//Optional methods here that control buttons, lights, and/or screens
-
-//Make sure to add timeout stuff when necessary
+/*
+ * Initialize the serial port.
+ */
+void setup() {
+  //---set pin direction
+  pinMode(ENABLE,OUTPUT);
+  pinMode(DIRA,OUTPUT);
+  pinMode(DIRB,OUTPUT);
+  Serial.begin(9600);
+}
 
 
 //Code from dht example (uno ultimate starter kit)
