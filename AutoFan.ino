@@ -3,7 +3,7 @@ Exercise the motor using
 the L293D chip
 ************************/
 #include <dht_nonblocking.h>
-// Put initial variables here
+//Initializing Variables
 
 #define DHT_SENSOR_TYPE DHT_TYPE_11
 #define ENABLE 5
@@ -56,20 +56,22 @@ void loop( )
   /* Measure temperature and humidity.  If the functions returns
      true, then a measurement is available. */
   if( measure_environment( &temperature, &humidity ) == true )
-  {
+  { 
+    //Prints out temp and humidity around the sensor
     Serial.print( "T = " );
     Serial.print( temperature, 1 );
     Serial.print( " deg. C, H = " );
     Serial.print( humidity, 1 );
     Serial.println( "%" );
+    if(temperature >= 75 || humidity >= 100 ){ //Should in theory turn on the fan if the temp is higher than 75 or if humidity is higher than 100%
+        Serial.println("Activating Fan..");
+        analogWrite(ENABLE,255); //enable on
+        digitalWrite(DIRA,HIGH);
+        digitalWrite(DIRB,LOW);
+        delay(120000);
+        digitalWrite(ENABLE,LOW); //all done
+    }
   }
-
-  Serial.println("Turning On");
-  analogWrite(ENABLE,255); //enable on
-  digitalWrite(DIRA,HIGH); //one way
-  digitalWrite(DIRB,LOW);
-  delay(2000);
-  digitalWrite(ENABLE,LOW); //all done
 }
 
 //Code from dht example (uno ultimate starter kit)
