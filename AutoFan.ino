@@ -45,6 +45,32 @@ static bool measure_environment( float *temperature, float *humidity )
   return( false );
 }
 
+/*
+ * Main program loop.
+ */
+void loop( )
+{
+  float temperature;
+  float humidity;
+
+  /* Measure temperature and humidity.  If the functions returns
+     true, then a measurement is available. */
+  if( measure_environment( &temperature, &humidity ) == true )
+  {
+    Serial.print( "T = " );
+    Serial.print( temperature, 1 );
+    Serial.print( " deg. C, H = " );
+    Serial.print( humidity, 1 );
+    Serial.println( "%" );
+  }
+
+  Serial.println("Turning On");
+  analogWrite(ENABLE,255); //enable on
+  digitalWrite(DIRA,HIGH); //one way
+  digitalWrite(DIRB,LOW);
+  delay(2000);
+  digitalWrite(ENABLE,LOW); //all done
+}
 
 //Code from dht example (uno ultimate starter kit)
 
