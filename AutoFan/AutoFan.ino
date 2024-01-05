@@ -1,3 +1,5 @@
+
+
 /************************
 Exercise the motor using
 the L293D chip
@@ -9,7 +11,6 @@ the L293D chip
 #define ENABLE 5
 #define DIRA 3
 #define DIRB 4
-
 static const int DHT_SENSOR_PIN = 2;
 int i;
 DHT_nonblocking dht_sensor( DHT_SENSOR_PIN, DHT_SENSOR_TYPE );
@@ -66,9 +67,10 @@ void loop( )
     if(temperature >= 75 || humidity >= 100 ){ //Should in theory turn on the fan if the temp is higher than 75 or if humidity is higher than 100%
         Serial.println("Activating Fan..");
         analogWrite(ENABLE,255); //enable on
-        digitalWrite(DIRA,HIGH);
+        digitalWrite(DIRA,255);
         digitalWrite(DIRB,LOW);
-        delay(120000);
+        Serial.println("Fan on");
+        delay(240000);
         digitalWrite(ENABLE,LOW); //all done
     }
   }
