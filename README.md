@@ -15,3 +15,7 @@ The arduino auto fan is pretty simple and a good part is based on elegoos exampl
 The fan is controlled by a L293D motor controller and is powered by a breadboard power supply (make sure to push the power button) the arduino controls the motor controller that lets through power when the arduino tells it to turn on the fan.
 
 *I cannot say I am an expert on electronics, I do this as a hobby, so if I am wrong about any of this please let me know*
+
+The fan should look like this when it detects high temp or heat
+
+https://github.com/kirby-b/Arduino-Auto-Fan/assets/118732723/08c394a8-9b58-45ed-86f2-0394d0ae97ed
